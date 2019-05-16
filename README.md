@@ -1,6 +1,6 @@
 # amplify2terraform
 
-This repo is a proof-of-concept for replacing Amplify CLI & Console with Terraform (and serverless for Lambda functions)
+This repo is a proof-of-concept for using Amplify client libraries with Terraform (and serverless for Lambda functions) rather than Amplify CLI and Console.
 
 See my blog for an explanation of _why_: https://tommygroshong.com/posts/appsync-cognito-cloudfront/
 
