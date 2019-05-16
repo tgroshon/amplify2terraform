@@ -1,0 +1,32 @@
+{
+  "name": "amp2terr",
+  "version": "1.0.0",
+  "dependencies": {
+    "apollo-client": "^2.5.1",
+    "aws-amplify": "^1.1.19",
+    "aws-amplify-react": "^2.3.0",
+    "aws-appsync": "^1.7.2",
+    "aws-appsync-react": "^1.2.7",
+    "graphql": "^14.2.1",
+    "graphql-tag": "^2.10.1",
+    "react": "^16.8.3",
+    "react-apollo": "^2.5.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
