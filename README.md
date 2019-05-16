@@ -31,3 +31,7 @@ The build workflow is as follows:
    * `terraform output -state=terraform/terraform.tfstate aws-exports-file > src/aws-exports.js`
    * `yarn build`
    * `aws s3 sync build s3://<YOURBUCKET> --cache-control max-age=300`
+
+## Explanation ##
+
+See my blog for an explanation: https://tommygroshong.com/posts/appsync-cognito-cloudfront/
