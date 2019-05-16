@@ -1,0 +1,44 @@
+---
+# Welcome to Serverless!
+# Happy Coding!
+
+service: services # NOTE: update this with your service name
+
+custom:
+  WorkerTable: "Worker-amcretejobs-${self:provider.stage}"
+
+provider:
+  name: aws
+  region: us-east-1
+  stage: "${opt:stage, 'dev'}"
+  runtime: nodejs8.10
+  environment:
+    STAGE: "${self:provider.stage}"
+    WORKER_TABLE: "${self:custom.WorkerTable}"
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:BatchGetItem"
+        - "dynamodb:GetItem"
+        - "dynamodb:Scan"
+        - "dynamodb:Query"
+      Resource:
+        - Fn::Join: [":", ["arn:aws:dynamodb", {"Ref": "AWS::Region"}, {"Ref": "AWS::AccountId"}, "table/${self:custom.WorkerTable"]]
+
+package:
+  include:
+    - handler.js
+  exclude:
+    - .git/**
+
+functions:
+  notifier:
+    handler: handler.notifier
+
+resources:
+  Outputs:
+    NotifierFunctionArn:
+      Value: { "Fn::GetAtt": ["NotifierLambdaFunction", "Arn" ] }
+      Export:
+        Name: "${self:provider.stage}NotifierLambdaFunction"

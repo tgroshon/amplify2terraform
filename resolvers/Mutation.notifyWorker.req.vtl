@@ -1,0 +1,19 @@
+## [Start] Lambda Invocation. **
+
+## Only users in manager group can do this
+#foreach($group in $context.identity.claims.get("cognito:groups"))
+    #if($group == "manager")
+        #set($inCognitoGroup = true)
+    #end
+#end
+#if(!$inCognitoGroup)
+  $util.unauthorized()
+#end
+{
+    "version" : "2017-02-28",
+    "operation": "Invoke",
+    "payload": {
+      "field": "notifyWorker",
+      "arguments": $util.toJson($context.arguments)
+    }
+}

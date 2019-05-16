@@ -1,0 +1,10 @@
+{
+  "name": "amp2terr-services",
+  "version": "1.0.0",
+  "description": "Serverless project for amp2terr backend functions",
+  "main": "handler.js",
+  "scripts": {},
+  "dependencies": {
+    "dynamodb-data-types": "^3.0.1"
+  }
+}

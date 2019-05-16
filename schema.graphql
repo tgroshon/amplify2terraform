@@ -1,0 +1,102 @@
+##############
+# Main model #
+##############
+
+type Worker {
+  id: ID!
+  name: String!
+  phone: AWSPhone!
+  role: String
+}
+
+#########################################
+# Helper model for results of Lambda Fn #
+#########################################
+
+type NotifyResult {
+  result: String!
+  message: String
+  failures: [String]
+}
+
+############################################
+# Aggregate type for supporting pagination #
+############################################
+
+type ModelWorkerConnection {
+  items: [Worker]
+  nextToken: String
+}
+
+#################################################
+# Input Types for mutating and filtering models #
+#################################################
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelWorkerFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  phone: ModelStringFilterInput
+  role: ModelStringFilterInput
+  and: [ModelWorkerFilterInput]
+  or: [ModelWorkerFilterInput]
+  not: ModelWorkerFilterInput
+}
+
+input CreateWorkerInput {
+  id: ID
+  name: String!
+  phone: AWSPhone!
+  role: String
+}
+
+input UpdateWorkerInput {
+  id: ID!
+  name: String
+  phone: AWSPhone
+  role: String
+}
+
+input DeleteWorkerInput {
+  id: ID!
+}
+
+################################
+# Schema behavior declarations #
+################################
+
+type Query {
+  listWorkers(filter: ModelWorkerFilterInput, limit: Int, nextToken: String): ModelWorkerConnection
+}
+
+type Mutation {
+  createWorker(input: CreateWorkerInput!): Worker
+  updateWorker(input: UpdateWorkerInput!): Worker
+  deleteWorker(input: DeleteWorkerInput!): Worker
+  notifyWorker(id: ID!): NotifyResult
+}
