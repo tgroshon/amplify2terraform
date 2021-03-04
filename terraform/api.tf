@@ -3,7 +3,7 @@
 ###################
 
 resource "aws_dynamodb_table" "worker" {
-  name         = "Worker-${var.namespace}"
+  name         = "Worker-${var.namespace}-${var.stage}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 

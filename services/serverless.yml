@@ -5,12 +5,12 @@
 service: services # NOTE: update this with your service name
 
 custom:
-  WorkerTable: "Worker-amcretejobs-${self:provider.stage}"
+  WorkerTable: "Worker-amp2terr-${self:provider.stage}"
 
 provider:
   name: aws
   region: us-east-1
-  stage: "${opt:stage, 'dev'}"
+  stage: "${opt:stage, 'development'}"
   runtime: nodejs8.10
   environment:
     STAGE: "${self:provider.stage}"

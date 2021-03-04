@@ -26,7 +26,7 @@ variable "app_name" {
 }
 
 variable "namespace" {
-  default = "amp2terr-dev"
+  default = "amp2terr"
 }
 
 variable "stage" {

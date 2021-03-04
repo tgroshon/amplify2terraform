@@ -31,8 +31,8 @@ resource "aws_cognito_user_pool" "main" {
 
   verification_message_template {
     default_email_option = "CONFIRM_WITH_CODE"
-    email_message        = "Amcrete Jobsite: Your verification code is {####}"
-    email_subject        = "Amcrete Jobsite Verification Code"
+    email_message        = "App: Your verification code is {####}"
+    email_subject        = "App Verification Code"
   }
 
   auto_verified_attributes = ["email"]
@@ -66,11 +66,11 @@ resource "aws_cognito_user_pool" "main" {
     allow_admin_create_user_only = true
 
     invite_message_template {
-      sms_message   = "Amcrete Jobsite Invitation. USR: {username} PWD: {####}  https://${var.site_domain}"
-      email_subject = "Amcrete Jobsite Invitation"
+      sms_message   = "App Invitation. USR: {username} PWD: {####}  https://${var.site_domain}"
+      email_subject = "App Invitation"
 
       email_message = <<EOF
-You have been added to the Amcrete Jobsite Application: https://${var.site_domain}
+You have been added to the App Application: https://${var.site_domain}
 Username: {username}
 Temporary Password: {####}
 
